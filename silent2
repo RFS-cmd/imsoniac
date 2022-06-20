@@ -10,6 +10,7 @@ local RunService = game:GetService("RunService")
 local Heartbeat = RunService.Heartbeat
 local LocalPlayer = Players.LocalPlayer
 local CurrentCamera = Workspace.CurrentCamera
+local dwCamera = workspace.CurrentCamera
 local Mouse = LocalPlayer:GetMouse()
 
 -- // Optimisation Vars (ugly)
@@ -37,9 +38,9 @@ local tableinsert = table.insert
 getgenv().Aiming = {
     Enabled = true,
 
-    ShowFOV = false,
+    ShowFOV = true,
     FOV = 119,
-    FOVSides = 300,
+    FOVSides = 100,
     FOVColour = Color3fromRGB(255, 0, 0),
 
     VisibleCheck = true,
@@ -68,7 +69,7 @@ local Aiming = getgenv().Aiming
 
 -- // Create circle
 local circle = Drawingnew("Circle")
-circle.Transparency = 1
+circle.Transparency = 0
 circle.Thickness = 2
 circle.Color = Aiming.FOVColour
 circle.Filled = false
@@ -84,7 +85,7 @@ function Aiming.UpdateFOV()
     -- // Set Circle Properties
     circle.Visible = Aiming.ShowFOV
     circle.Radius = (Aiming.FOV * 3)
-    circle.Position = Vector2new(Mouse.X, Mouse.Y + GetGuiInset(GuiService).Y)
+    circle.Position = Vector2.new(dwCamera.ViewportSize.X / 2, dwCamera.ViewportSize.Y / 2)
     circle.NumSides = Aiming.FOVSides
     circle.Color = Aiming.FOVColour
 
