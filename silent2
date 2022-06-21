@@ -11,8 +11,11 @@ local Heartbeat = RunService.Heartbeat
 local LocalPlayer = Players.LocalPlayer
 local CurrentCamera = Workspace.CurrentCamera
 local dwCamera = workspace.CurrentCamera
-local Mouse = LocalPlayer:GetMouse()
-
+local dwRunService = game:GetService("RunService")
+local dwUIS = game:GetService("UserInputService")
+local dwEntities = game:GetService("Players")
+local dwLocalPlayer = dwEntities.LocalPlayer
+local dwMouse = dwLocalPlayer:GetMouse()
 -- // Optimisation Vars (ugly)
 local Drawingnew = Drawing.new
 local Color3fromRGB = Color3.fromRGB
@@ -69,11 +72,12 @@ local Aiming = getgenv().Aiming
 
 -- // Create circle
 local circle = Drawingnew("Circle")
-circle.Transparency = 0
-circle.Thickness = 2
-circle.Color = Aiming.FOVColour
+circle.Visible = true
+circle.Radius = 50
+circle.Color = Color3.fromRGB(255,255,255)
+circle.Thickness = 1
 circle.Filled = false
-Aiming.FOVCircle = circle
+circle.Transparency = 1
 
 -- // Update
 function Aiming.UpdateFOV()
