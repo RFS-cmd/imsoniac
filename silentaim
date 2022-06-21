@@ -31,7 +31,7 @@ function Aiming.Check()
     if (KOd or Grabbed) then
         return false
     end
-
+-- ok
     return true
 end
 
