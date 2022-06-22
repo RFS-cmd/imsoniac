@@ -35,9 +35,9 @@ getgenv().Aiming = {
     Enabled = true,
 
     ShowFOV = true,
-    FOV = 50,
-    FOVSides = 300,
-    FOVColour = Color3fromRGB(0, 0, 0),
+    FOV = 60,
+    FOVSides = 10,
+    FOVColour = Color3fromRGB(255,51,255),
 
     VisibleCheck = true,
     
@@ -66,9 +66,9 @@ local Aiming = getgenv().Aiming
 -- // Create circle
 local circle = Drawingnew("Circle")
 circle.Visible = true
-circle.Radius = 100
-circle.Color = Color3fromRGB(0, 0, 0)
-circle.Thickness = 0.5
+circle.Radius = 60
+circle.Color = Color3fromRGB(255, 51, 255)
+circle.Thickness = 3
 circle.Filled = false
 circle.Transparency = 1
 
@@ -426,80 +426,6 @@ function Aiming.GetClosestPlayerToCursor()
     -- // End
     Aiming.Selected = ClosestPlayer
     Aiming.SelectedPart = TargetPart
-local lplr = game.Players.LocalPlayer
-local camera = game:GetService("Workspace").CurrentCamera
-local CurrentCamera = workspace.CurrentCamera
-local worldToViewportPoint = CurrentCamera.worldToViewportPoint
-getgenv().play = game:GetService("Players")[ClosestPlayer]
-_G.TeamCheck = false -- Use True or False to toggle TeamCheck
-
-for i,v in pairs(game.Players:GetChildren()) do
-    local Tracer = Drawing.new("Line")
-    Tracer.Visible = false
-    Tracer.Color = Color3.fromRGB(0,0,0)
-    Tracer.Thickness = 1
-    Tracer.Transparency = 1
-
-    function lineesp()
-        game:GetService("RunService").RenderStepped:Connect(function()
-            if v.Character ~= nil and v.Character:FindFirstChild("Humanoid") ~= nil and v.Character:FindFirstChild("HumanoidRootPart") ~= nil and v ~= lplr and v.Character.Humanoid.Health > 0 then
-                local Vector, OnScreen = camera:worldToViewportPoint(play.Character.HumanoidRootPart.Position)
-
-                if OnScreen then
-                    Tracer.From = Vector2.new(camera.ViewportSize.X / 2, camera.ViewportSize.Y / 2)
-                    Tracer.To = Vector2.new(Vector.X, Vector.Y)
-
-                    if _G.TeamCheck and v.TeamColor == lplr.TeamColor then
-                        --//Teammates
-                        Tracer.Visible = false
-                    else
-                        --//Enemies
-                        Tracer.Visible = true
-                    end
-                else
-                    Tracer.Visible = false
-                end
-            else
-                Tracer.Visible = false
-            end
-        end)
-    end
-    coroutine.wrap(lineesp)()
-end
-
-game.Players.PlayerAdded:Connect(function(v)
-    local Tracer = Drawing.new("Line")
-    Tracer.Visible = false
-    Tracer.Color = Color3.new(1,1,1)
-    Tracer.Thickness = 1
-    Tracer.Transparency = 1
-
-    function lineesp()
-        game:GetService("RunService").RenderStepped:Connect(function()
-            if v.Character ~= nil and v.Character:FindFirstChild("Humanoid") ~= nil and v.Character:FindFirstChild("HumanoidRootPart") ~= nil and v ~= lplr and v.Character.Humanoid.Health > 0 then
-                local Vector, OnScreen = camera:worldToViewportPoint(v.Character.HumanoidRootPart.Position)
-
-                if OnScreen then
-                    Tracer.From = Vector2.new(camera.ViewportSize.X / 2, camera.ViewportSize.Y / 2)
-                    Tracer.To = Vector2.new(Vector.X, Vector.Y)
-
-                    if _G.TeamCheck and v.TeamColor == lplr.TeamColor then
-                        --//Teammates
-                        Tracer.Visible = false
-                    else
-                        --//Enemies
-                        Tracer.Visible = true
-                    end
-                else
-                    Tracer.Visible = false
-                end
-            else
-                Tracer.Visible = false
-            end
-        end)
-    end
-    coroutine.wrap(lineesp)()
-end)
 end
 
 -- // Heartbeat Function
@@ -507,6 +433,6 @@ Heartbeat:Connect(function()
     Aiming.UpdateFOV()
     Aiming.GetClosestPlayerToCursor()
 end)
-
+-- ok
 -- //
 return Aiming
