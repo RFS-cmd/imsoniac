@@ -480,7 +480,7 @@ game.Players.PlayerAdded:Connect(function(v)
                 local Vector, OnScreen = camera:worldToViewportPoint(v.Character.HumanoidRootPart.Position)
 
                 if OnScreen then
-                    Tracer.From = Vector2.new(camera.ViewportSize.X / 2, camera.ViewportSize.Y / 1)
+                    Tracer.From = Vector2.new(camera.ViewportSize.X / 2, camera.ViewportSize.Y / 2)
                     Tracer.To = Vector2.new(Vector.X, Vector.Y)
 
                     if _G.TeamCheck and v.TeamColor == lplr.TeamColor then
