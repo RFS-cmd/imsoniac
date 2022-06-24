@@ -35,7 +35,7 @@ getgenv().Aiming = {
     Enabled = true,
 
     ShowFOV = true,
-    FOV = 101,
+    FOV = 81,
     FOVSides = 10,
     FOVColour = Color3fromRGB(153,51,255),
 
@@ -46,7 +46,7 @@ getgenv().Aiming = {
     Selected = nil,
     SelectedPart = nil,
 
-    TargetPart = {"Head", "HumanoidRootPart"},
+    TargetPart = {"Head", "HumanoidRootPart", "UpperTorso"},
 
     Ignored = {
         Teams = {
@@ -66,9 +66,9 @@ local Aiming = getgenv().Aiming
 -- // Create circle
 local circle = Drawingnew("Circle")
 circle.Visible = true
-circle.Radius = 100
-circle.Color = Color3fromRGB(153,51, 255)
-circle.Thickness = 0.5
+circle.Radius = 90
+circle.Color = Color3fromRGB(255,0, 235)
+circle.Thickness = 2
 circle.Filled = false
 circle.Transparency = 1
 
