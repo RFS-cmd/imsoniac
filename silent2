@@ -34,7 +34,7 @@ local tableinsert = table.insert
 getgenv().Aiming = {
     Enabled = true,
 
-    ShowFOV = false,
+    ShowFOV = true,
     FOV = 200,
     FOVSides = 300,
     FOVColour = Color3fromRGB(153,51,255),
@@ -46,8 +46,9 @@ getgenv().Aiming = {
     Selected = nil,
     SelectedPart = nil,
 
-    TargetPart = {"Head", "HumanoidRootPart"},
---00
+    TargetPart = {"Head", "UpperTorso"},
+--001
+
     Ignored = {
         Teams = {
             {
