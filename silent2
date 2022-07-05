@@ -34,7 +34,7 @@ local tableinsert = table.insert
 getgenv().Aiming = {
     Enabled = true,
 
-    ShowFOV = false,
+    ShowFOV = true,
     FOV = 200,
     FOVSides = 300,
     FOVColour = Color3fromRGB(0,0,153),
@@ -46,7 +46,7 @@ getgenv().Aiming = {
     Selected = nil,
     SelectedPart = nil,
 
-    TargetPart = {"Head"},
+    TargetPart = {"Head", "HumanoidRootPart"},
 --001
 
     Ignored = {
@@ -69,7 +69,7 @@ local circle = Drawingnew("Circle")
 circle.Visible = true
 circle.Radius = 200
 circle.Color = Color3fromRGB(0,0,153)
-circle.Thickness = 3
+circle.Thickness = 5
 circle.Filled = false
 circle.Transparency = 1
 --0
